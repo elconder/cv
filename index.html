@@ -790,6 +790,40 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Language Switcher */
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 3px;
+            margin-left: 12px;
+        }
+
+        .lang-switch button {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lang-switch button.active {
+            background: var(--accent);
+            color: var(--white, #fff);
+        }
+
+        .lang-switch button:hover:not(.active) {
+            color: var(--text-primary);
+        }
+
     </style>
 </head>
 <body>
@@ -801,11 +835,15 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
-                <li><a href="#skills"><i class="fa-solid fa-code"></i> Skills</a></li>
-                <li><a href="#ai"><i class="fa-solid fa-robot"></i> AI</a></li>
-                <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
-                <li><a href="#education"><i class="fa-solid fa-graduation-cap"></i> Education</a></li>
+                <li><a href="#about"><i class="fa-solid fa-user"></i> <span data-i18n="nav.about">About</span></a></li>
+                <li><a href="#skills"><i class="fa-solid fa-code"></i> <span data-i18n="nav.skills">Skills</span></a></li>
+                <li><a href="#ai"><i class="fa-solid fa-robot"></i> <span data-i18n="nav.ai">AI</span></a></li>
+                <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> <span data-i18n="nav.experience">Experience</span></a></li>
+                <li><a href="#education"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="nav.education">Education</span></a></li>
+            <div class="lang-switch">
+                <button id="langEn" class="active" aria-label="English">EN</button>
+                <button id="langEs" aria-label="Español">ES</button>
+            </div>
             </ul>
         </div>
     </nav>
@@ -815,15 +853,15 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Elkin<br><span class="gradient">Contreras</span></h1>
-                <p class="hero-subtitle">Senior Web UI Developer & Frontend Architect</p>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">Senior Web UI Developer & Frontend Architect</p>
                 <p class="hero-summary">
-                    Over 10 years building scalable, user-centric web applications for world-class brands including Disney, Warner Bros. Discovery, and Gym Launch. Expert in design systems, frontend architecture, and AI-augmented development workflows.
+                    <span data-i18n="hero.summary">Over 10 years building scalable, user-centric web applications for world-class brands including Disney, Warner Bros. Discovery, and Gym Launch. Expert in design systems, frontend architecture, and AI-augmented development workflows.</span>
                 </p>
                 <div class="hero-meta">
-                    <span class="meta-badge accent"><i class="fa-solid fa-rocket"></i> 10+ Years</span>
+                    <span class="meta-badge accent"><i class="fa-solid fa-rocket"></i> <span data-i18n="hero.years">10+ Years</span></span>
                     <span class="meta-badge"><i class="fa-solid fa-location-dot"></i> Cartagena, Colombia</span>
                     <span class="meta-badge"><i class="fa-solid fa-graduation-cap"></i> MS @ UTA (2027)</span>
-                    <span class="meta-badge"><i class="fa-solid fa-language"></i> English B2 (TOEFL)</span>
+                    <span class="meta-badge"><i class="fa-solid fa-language"></i> <span data-i18n="hero.english">English B2 (TOEFL)</span></span>
                 </div>
             </div>
             <div class="hero-photo">
@@ -838,15 +876,15 @@
     <section class="section skills-section" id="skills">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-label"><i class="fa-solid fa-layer-group"></i> Expertise</p>
-                <h2>Technical Skills</h2>
-                <p>A decade of enterprise-level development across modern web technologies</p>
+                <p class="section-label"><i class="fa-solid fa-layer-group"></i> <span data-i18n="skills.label">Expertise</span></p>
+                <h2 data-i18n="skills.title">Technical Skills</h2>
+                <p><span data-i18n="skills.desc">A decade of enterprise-level development across modern web technologies</span></p>
             </div>
             <div class="skills-grid">
                 <div class="skill-card reveal">
                     <div class="skill-card-header">
                         <div class="skill-card-icon purple"><i class="fa-brands fa-react"></i></div>
-                        <div class="skill-card-title">Frontend Frameworks</div>
+                        <div class="skill-card-title" data-i18n="skills.frontend">Frontend Frameworks</div>
                     </div>
                     <div class="tags">
                         <span class="tag featured">React</span>
@@ -861,7 +899,7 @@
                 <div class="skill-card reveal">
                     <div class="skill-card-header">
                         <div class="skill-card-icon cyan"><i class="fa-brands fa-js"></i></div>
-                        <div class="skill-card-title">Languages & Core</div>
+                        <div class="skill-card-title" data-i18n="skills.languages">Languages & Core</div>
                     </div>
                     <div class="tags">
                         <span class="tag featured">TypeScript</span>
@@ -875,7 +913,7 @@
                 <div class="skill-card reveal">
                     <div class="skill-card-header">
                         <div class="skill-card-icon green"><i class="fa-solid fa-palette"></i></div>
-                        <div class="skill-card-title">UI & Design Systems</div>
+                        <div class="skill-card-title" data-i18n="skills.ui">UI & Design Systems</div>
                     </div>
                     <div class="tags">
                         <span class="tag featured">Tailwind CSS</span>
@@ -889,7 +927,7 @@
                 <div class="skill-card reveal">
                     <div class="skill-card-header">
                         <div class="skill-card-icon purple"><i class="fa-solid fa-database"></i></div>
-                        <div class="skill-card-title">State & Data</div>
+                        <div class="skill-card-title" data-i18n="skills.state">State & Data</div>
                     </div>
                     <div class="tags">
                         <span class="tag featured">Zustand</span>
@@ -903,7 +941,7 @@
                 <div class="skill-card reveal">
                     <div class="skill-card-header">
                         <div class="skill-card-icon cyan"><i class="fa-solid fa-cubes"></i></div>
-                        <div class="skill-card-title">Architecture & Testing</div>
+                        <div class="skill-card-title" data-i18n="skills.arch">Architecture & Testing</div>
                     </div>
                     <div class="tags">
                         <span class="tag featured">Micro Frontends</span>
@@ -918,7 +956,7 @@
                 <div class="skill-card reveal">
                     <div class="skill-card-header">
                         <div class="skill-card-icon green"><i class="fa-solid fa-cloud"></i></div>
-                        <div class="skill-card-title">Cloud & DevOps</div>
+                        <div class="skill-card-title" data-i18n="skills.cloud">Cloud & DevOps</div>
                     </div>
                     <div class="tags">
                         <span class="tag">Google Cloud</span>
@@ -932,7 +970,7 @@
                 <div class="skill-card reveal">
                     <div class="skill-card-header">
                         <div class="skill-card-icon purple"><i class="fa-solid fa-link"></i></div>
-                        <div class="skill-card-title">Blockchain & Web3</div>
+                        <div class="skill-card-title" data-i18n="skills.blockchain">Blockchain & Web3</div>
                     </div>
                     <div class="tags">
                         <span class="tag featured">Solidity</span>
@@ -951,40 +989,40 @@
     <section class="section ai-section" id="ai">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-label"><i class="fa-solid fa-microchip"></i> Innovation</p>
-                <h2>AI & Emerging Technologies</h2>
-                <p>Integrating AI-powered tools into modern software delivery pipelines</p>
+                <p class="section-label"><i class="fa-solid fa-microchip"></i> <span data-i18n="ai.label">Innovation</span></p>
+                <h2 data-i18n="ai.title">AI & Emerging Technologies</h2>
+                <p><span data-i18n="ai.desc">Integrating AI-powered tools into modern software delivery pipelines</span></p>
             </div>
             <div class="ai-grid">
                 <div class="ai-card reveal">
                     <div class="ai-card-icon"><i class="fa-solid fa-plug"></i></div>
-                    <h3>MCP Servers</h3>
-                    <p>Building Model Context Protocol servers that connect AI assistants with development tools and external services</p>
+                    <h3 data-i18n="ai.mcp.title">MCP Servers</h3>
+                    <p><span data-i18n="ai.mcp.desc">Building Model Context Protocol servers that connect AI assistants with development tools and external services</span></p>
                 </div>
                 <div class="ai-card reveal">
                     <div class="ai-card-icon"><i class="fa-solid fa-robot"></i></div>
-                    <h3>AI Agents</h3>
-                    <p>Designing autonomous AI agents that analyze, plan, and execute complex software development tasks</p>
+                    <h3 data-i18n="ai.agents.title">AI Agents</h3>
+                    <p><span data-i18n="ai.agents.desc">Designing autonomous AI agents that analyze, plan, and execute complex software development tasks</span></p>
                 </div>
                 <div class="ai-card reveal">
                     <div class="ai-card-icon"><i class="fa-solid fa-diagram-project"></i></div>
-                    <h3>Sub-Agents</h3>
-                    <p>Orchestrating multi-agent pipelines where specialized sub-agents collaborate on full-stack solutions</p>
+                    <h3 data-i18n="ai.sub.title">Sub-Agents</h3>
+                    <p><span data-i18n="ai.sub.desc">Orchestrating multi-agent pipelines where specialized sub-agents collaborate on full-stack solutions</span></p>
                 </div>
                 <div class="ai-card reveal">
                     <div class="ai-card-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                    <h3>AI Skills</h3>
-                    <p>Creating modular, reusable AI capabilities that can be composed and shared across teams and projects</p>
+                    <h3 data-i18n="ai.skills.title">AI Skills</h3>
+                    <p><span data-i18n="ai.skills.desc">Creating modular, reusable AI capabilities that can be composed and shared across teams and projects</span></p>
                 </div>
                 <div class="ai-card reveal">
                     <div class="ai-card-icon"><i class="fa-solid fa-file-lines"></i></div>
-                    <h3>Spec-Driven Development</h3>
-                    <p>Implementing SDD workflows where specifications drive automated code generation and testing</p>
+                    <h3 data-i18n="ai.sdd.title">Spec-Driven Development</h3>
+                    <p><span data-i18n="ai.sdd.desc">Implementing SDD workflows where specifications drive automated code generation and testing</span></p>
                 </div>
                 <div class="ai-card reveal">
                     <div class="ai-card-icon"><i class="fa-solid fa-comments"></i></div>
-                    <h3>Prompt Engineering</h3>
-                    <p>Crafting effective prompts and system instructions to maximize AI output quality and reliability</p>
+                    <h3 data-i18n="ai.prompt.title">Prompt Engineering</h3>
+                    <p><span data-i18n="ai.prompt.desc">Crafting effective prompts and system instructions to maximize AI output quality and reliability</span></p>
                 </div>
             </div>
         </div>
@@ -994,9 +1032,9 @@
     <section class="section experience-section" id="experience">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-label"><i class="fa-solid fa-briefcase"></i> Career</p>
-                <h2>Professional Experience</h2>
-                <p>Building impactful products for global brands</p>
+                <p class="section-label"><i class="fa-solid fa-briefcase"></i> <span data-i18n="exp.label">Career</span></p>
+                <h2 data-i18n="exp.title">Professional Experience</h2>
+                <p><span data-i18n="exp.desc">Building impactful products for global brands</span></p>
             </div>
             <div class="timeline">
                 <div class="timeline-item reveal">
@@ -1004,14 +1042,14 @@
                         <span class="t-company">Globant — Disney Parks</span>
                         <span class="t-date">Jul 2025 – Present</span>
                     </div>
-                    <div class="t-role">Web UI Developer (Software Designer)</div>
-                    <div class="t-project"><i class="fa-solid fa-puzzle-piece"></i> Web Components Design System • 9 months</div>
+                    <div class="t-role" data-i18n="exp.role.designer">Web UI Developer (Software Designer)</div>
+                    <div class="t-project"><i class="fa-solid fa-puzzle-piece"></i> <span data-i18n="exp.disney2.project">Web Components Design System • 9 months</span></div>
                     <ul class="t-bullets">
-                        <li>Led a team of six frontend engineers in developing a framework-agnostic design system using Stencil, Tailwind CSS, and Storybook</li>
-                        <li>Ensured all components met accessibility (WCAG 2.1 AA) standards and best practices</li>
-                        <li>Developed proof-of-concepts integrating Figma MCP and Storybook MCP for AI-augmented design-to-code workflows</li>
-                        <li>Established development best practices to deliver scalable, maintainable code</li>
-                        <li>Conducted technical interviews for frontend candidates</li>
+                        <li data-i18n="exp.disney2.b1">Led a team of six frontend engineers in developing a framework-agnostic design system using Stencil, Tailwind CSS, and Storybook</li>
+                        <li data-i18n="exp.disney2.b2">Ensured all components met accessibility (WCAG 2.1 AA) standards and best practices</li>
+                        <li data-i18n="exp.disney2.b3">Developed proof-of-concepts integrating Figma MCP and Storybook MCP for AI-augmented design-to-code workflows</li>
+                        <li data-i18n="exp.disney2.b4">Established development best practices to deliver scalable, maintainable code</li>
+                        <li data-i18n="exp.disney2.b5">Conducted technical interviews for frontend candidates</li>
                     </ul>
                     <div class="t-tech">
                         <span>Stencil</span><span>Tailwind CSS</span><span>Storybook</span><span>MCP</span><span>TypeScript</span><span>Web Components</span><span>Figma</span>
@@ -1023,13 +1061,13 @@
                         <span class="t-company">Globant — Gym Launch</span>
                         <span class="t-date">Aug 2024 – Jul 2025</span>
                     </div>
-                    <div class="t-role">Web UI Developer (Software Designer)</div>
-                    <div class="t-project"><i class="fa-solid fa-dumbbell"></i> Fitness SaaS Platform • 1 year</div>
+                    <div class="t-role" data-i18n="exp.role.designer">Web UI Developer (Software Designer)</div>
+                    <div class="t-project"><i class="fa-solid fa-dumbbell"></i> <span data-i18n="exp.gym.project">Fitness SaaS Platform • 1 year</span></div>
                     <ul class="t-bullets">
-                        <li>Developed UI components and pages using React, MUI, Zod, Zustand, and TanStack Query</li>
-                        <li>Focused on scalable architecture, component reusability, and security best practices</li>
-                        <li>Ensured seamless integration with RESTful APIs and delivered high-performing responsive experiences</li>
-                        <li>Championed server-driven UI patterns and component-based development</li>
+                        <li data-i18n="exp.gym.b1">Developed UI components and pages using React, MUI, Zod, Zustand, and TanStack Query</li>
+                        <li data-i18n="exp.gym.b2">Focused on scalable architecture, component reusability, and security best practices</li>
+                        <li data-i18n="exp.gym.b3">Ensured seamless integration with RESTful APIs and delivered high-performing responsive experiences</li>
+                        <li data-i18n="exp.gym.b4">Championed server-driven UI patterns and component-based development</li>
                     </ul>
                     <div class="t-tech">
                         <span>React</span><span>MUI</span><span>Zustand</span><span>Zod</span><span>TanStack Query</span><span>TypeScript</span>
@@ -1041,15 +1079,15 @@
                         <span class="t-company">Globant — Warner Bros. Discovery</span>
                         <span class="t-date">Aug 2020 – Aug 2024</span>
                     </div>
-                    <div class="t-role">Web UI Developer (Software Designer)</div>
-                    <div class="t-project"><i class="fa-solid fa-film"></i> Content & Advertising Platform • 3 years</div>
+                    <div class="t-role" data-i18n="exp.role.designer">Web UI Developer (Software Designer)</div>
+                    <div class="t-project"><i class="fa-solid fa-film"></i> <span data-i18n="exp.wb.project">Content & Advertising Platform • 3 years</span></div>
                     <ul class="t-bullets">
-                        <li>Led a development team of six engineers through the HBO/Discovery merger</li>
-                        <li>Spearheaded the migration from monolithic architecture to micro-frontend services</li>
-                        <li>Implemented centralized state management to improve data consistency</li>
-                        <li>Built the Content Planner application supporting the HBO–Discovery content fusion</li>
-                        <li>Developed micro-frontend applications for scheduling and advertising workflows</li>
-                        <li>Translated business needs into technical solutions through client engagement</li>
+                        <li data-i18n="exp.wb.b1">Led a development team of six engineers through the HBO/Discovery merger</li>
+                        <li data-i18n="exp.wb.b2">Spearheaded the migration from monolithic architecture to micro-frontend services</li>
+                        <li data-i18n="exp.wb.b3">Implemented centralized state management to improve data consistency</li>
+                        <li data-i18n="exp.wb.b4">Built the Content Planner application supporting the HBO–Discovery content fusion</li>
+                        <li data-i18n="exp.wb.b5">Developed micro-frontend applications for scheduling and advertising workflows</li>
+                        <li data-i18n="exp.wb.b6">Translated business needs into technical solutions through client engagement</li>
                     </ul>
                     <div class="t-tech">
                         <span>Angular</span><span>React</span><span>Micro Frontends</span><span>Single SPA</span><span>Akita</span><span>RxJS</span><span>PrimeNG</span>
@@ -1061,13 +1099,13 @@
                         <span class="t-company">ITXpertix</span>
                         <span class="t-date">Jun 2019 – Apr 2020</span>
                     </div>
-                    <div class="t-role">Frontend Architect</div>
-                    <div class="t-project"><i class="fa-solid fa-building-columns"></i> Government & Enterprise • 10 months</div>
+                    <div class="t-role" data-i18n="exp.role.architect">Frontend Architect</div>
+                    <div class="t-project"><i class="fa-solid fa-building-columns"></i> <span data-i18n="exp.itx.project">Government & Enterprise • 10 months</span></div>
                     <ul class="t-bullets">
-                        <li>Led a team of four developers building mobile and web applications</li>
-                        <li>Architected ZONASER, a high-impact Ionic app that streamlined government procedures for thousands of Colombian users</li>
-                        <li>Defined web architectures ensuring quality, security, and robustness</li>
-                        <li>Validated UX designs and provided technical guidance</li>
+                        <li data-i18n="exp.itx.b1">Led a team of four developers building mobile and web applications</li>
+                        <li data-i18n="exp.itx.b2">Architected ZONASER, a high-impact Ionic app that streamlined government procedures for thousands of Colombian users</li>
+                        <li data-i18n="exp.itx.b3">Defined web architectures ensuring quality, security, and robustness</li>
+                        <li data-i18n="exp.itx.b4">Validated UX designs and provided technical guidance</li>
                     </ul>
                     <div class="t-tech">
                         <span>Vue.js</span><span>Ionic</span><span>Angular</span><span>Web Components</span><span>Figma</span>
@@ -1079,13 +1117,13 @@
                         <span class="t-company">Globant — Disney Parks</span>
                         <span class="t-date">Jul 2016 – Jun 2019</span>
                     </div>
-                    <div class="t-role">Web UI Developer (Semi-Senior Advanced)</div>
-                    <div class="t-project"><i class="fa-solid fa-castle"></i> Parks & Hotels Consumer Site • 3 years</div>
+                    <div class="t-role" data-i18n="exp.role.ssr">Web UI Developer (Semi-Senior Advanced)</div>
+                    <div class="t-project"><i class="fa-solid fa-castle"></i> <span data-i18n="exp.disney1.project">Parks & Hotels Consumer Site • 3 years</span></div>
                     <ul class="t-bullets">
-                        <li>Contributed to WCAG compliance across Disney's consumer-facing website</li>
-                        <li>Built a 360° image viewer using vanilla JavaScript and Three.js (WebGL)</li>
-                        <li>Resolved performance issues and visual inconsistencies across the platform</li>
-                        <li>Developed new features and maintained complex web application functionality</li>
+                        <li data-i18n="exp.disney1.b1">Contributed to WCAG compliance across Disney's consumer-facing website</li>
+                        <li data-i18n="exp.disney1.b2">Built a 360° image viewer using vanilla JavaScript and Three.js (WebGL)</li>
+                        <li data-i18n="exp.disney1.b3">Resolved performance issues and visual inconsistencies across the platform</li>
+                        <li data-i18n="exp.disney1.b4">Developed new features and maintained complex web application functionality</li>
                     </ul>
                     <div class="t-tech">
                         <span>AngularJS</span><span>Three.js</span><span>WebGL</span><span>Vanilla JS</span><span>PHP</span><span>WCAG</span>
@@ -1097,13 +1135,13 @@
                         <span class="t-company">TigoUne</span>
                         <span class="t-date">Jan 2012 – Apr 2016</span>
                     </div>
-                    <div class="t-role">Senior Web Developer</div>
-                    <div class="t-project"><i class="fa-solid fa-tv"></i> Smart TV & Streaming Apps • 4 years</div>
+                    <div class="t-role" data-i18n="exp.role.senior">Senior Web Developer</div>
+                    <div class="t-project"><i class="fa-solid fa-tv"></i> <span data-i18n="exp.tigo.project">Smart TV & Streaming Apps • 4 years</span></div>
                     <ul class="t-bullets">
-                        <li>Led a three-member team building Smart TV applications</li>
-                        <li>Developed UNETV, a Smart TV video-on-demand streaming application</li>
-                        <li>Maintained expertise in Samsung Tizen and LG WebOS SDKs</li>
-                        <li>Managed full deployment lifecycle from development to production</li>
+                        <li data-i18n="exp.tigo.b1">Led a three-member team building Smart TV applications</li>
+                        <li data-i18n="exp.tigo.b2">Developed UNETV, a Smart TV video-on-demand streaming application</li>
+                        <li data-i18n="exp.tigo.b3">Maintained expertise in Samsung Tizen and LG WebOS SDKs</li>
+                        <li data-i18n="exp.tigo.b4">Managed full deployment lifecycle from development to production</li>
                     </ul>
                     <div class="t-tech">
                         <span>AngularJS</span><span>Samsung Tizen</span><span>LG WebOS</span><span>Vanilla JS</span><span>PHP</span><span>MySQL</span>
@@ -1117,22 +1155,22 @@
     <section class="section edu-section" id="education">
         <div class="section-inner">
             <div class="section-header">
-                <p class="section-label"><i class="fa-solid fa-graduation-cap"></i> Education</p>
-                <h2>Academic Background</h2>
+                <p class="section-label"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="edu.label">Education</span></p>
+                <h2 data-i18n="edu.title">Academic Background</h2>
             </div>
             <div class="edu-grid">
                 <div class="edu-card reveal">
                     <div class="edu-card-icon"><i class="fa-solid fa-university"></i></div>
                     <h3>University of Texas at Arlington</h3>
-                    <div class="degree">M.S. in Software Engineering</div>
-                    <div class="edu-meta">College of Engineering • Starting Spring 2027</div>
-                    <div class="edu-badge"><i class="fa-solid fa-circle-check"></i> Admitted</div>
+                    <div class="degree" data-i18n="edu.uta.degree">M.S. in Software Engineering</div>
+                    <div class="edu-meta"><span data-i18n="edu.uta.meta">College of Engineering • Starting Spring 2027</span></div>
+                    <div class="edu-badge"><i class="fa-solid fa-circle-check"></i> <span data-i18n="edu.uta.badge">Admitted</span></div>
                 </div>
                 <div class="edu-card reveal">
                     <div class="edu-card-icon"><i class="fa-solid fa-school"></i></div>
                     <h3>Universidad Tecnológico Comfenalco</h3>
-                    <div class="degree">Systems Engineering</div>
-                    <div class="edu-meta">Cartagena de Indias, Colombia • 2002 – 2006</div>
+                    <div class="degree" data-i18n="edu.comf.degree">Systems Engineering</div>
+                    <div class="edu-meta"><span data-i18n="edu.comf.meta">Cartagena de Indias, Colombia • 2002 – 2006</span></div>
                 </div>
             </div>
         </div>
@@ -1142,19 +1180,19 @@
     <section class="section lang-section" id="languages">
         <div class="section-inner">
             <div class="section-header" style="text-align:center;">
-                <p class="section-label" style="justify-content:center;"><i class="fa-solid fa-globe"></i> Languages</p>
-                <h2>Communication</h2>
+                <p class="section-label" style="justify-content:center;"><i class="fa-solid fa-globe"></i> <span data-i18n="lang.label">Languages</span></p>
+                <h2 data-i18n="lang.title">Communication</h2>
             </div>
             <div class="lang-grid">
                 <div class="lang-card reveal">
                     <i class="fa-solid fa-earth-americas"></i>
-                    <h3>Spanish</h3>
-                    <p>Native Speaker</p>
+                    <h3 data-i18n="lang.es.name">Spanish</h3>
+                    <p data-i18n="lang.es.level">Native Speaker</p>
                 </div>
                 <div class="lang-card reveal">
                     <i class="fa-solid fa-earth-europe"></i>
-                    <h3>English</h3>
-                    <p>B2 — TOEFL Certified</p>
+                    <h3 data-i18n="lang.en.name">English</h3>
+                    <p data-i18n="lang.en.level">B2 — TOEFL Certified</p>
                 </div>
             </div>
         </div>
@@ -1171,24 +1209,224 @@
     </footer>
 
     <script>
+        // i18n translations
+        const i18n = {
+            en: {
+                "nav.about": "About",
+                "nav.skills": "Skills",
+                "nav.ai": "AI",
+                "nav.experience": "Experience",
+                "nav.education": "Education",
+                "hero.subtitle": "Senior Web UI Developer \u0026 Frontend Architect",
+                "hero.summary": "Over 10 years building scalable, user-centric web applications for world-class brands including Disney, Warner Bros. Discovery, and Gym Launch. Expert in design systems, frontend architecture, and AI-augmented development workflows.",
+                "hero.years": "10+ Years",
+                "hero.english": "English B2 (TOEFL)",
+                "skills.label": "Expertise",
+                "skills.title": "Technical Skills",
+                "skills.desc": "A decade of enterprise-level development across modern web technologies",
+                "skills.frontend": "Frontend Frameworks",
+                "skills.languages": "Languages \u0026 Core",
+                "skills.ui": "UI \u0026 Design Systems",
+                "skills.state": "State \u0026 Data",
+                "skills.arch": "Architecture \u0026 Testing",
+                "skills.cloud": "Cloud \u0026 DevOps",
+                "skills.blockchain": "Blockchain \u0026 Web3",
+                "ai.label": "Innovation",
+                "ai.title": "AI \u0026 Emerging Technologies",
+                "ai.desc": "Integrating AI-powered tools into modern software delivery pipelines",
+                "ai.mcp.title": "MCP Servers",
+                "ai.mcp.desc": "Building Model Context Protocol servers that connect AI assistants with development tools and external services",
+                "ai.agents.title": "AI Agents",
+                "ai.agents.desc": "Designing autonomous AI agents that analyze, plan, and execute complex software development tasks",
+                "ai.sub.title": "Sub-Agents",
+                "ai.sub.desc": "Orchestrating multi-agent pipelines where specialized sub-agents collaborate on full-stack solutions",
+                "ai.skills.title": "AI Skills",
+                "ai.skills.desc": "Creating modular, reusable AI capabilities that can be composed and shared across teams and projects",
+                "ai.sdd.title": "Spec-Driven Development",
+                "ai.sdd.desc": "Implementing SDD workflows where specifications drive automated code generation and testing",
+                "ai.prompt.title": "Prompt Engineering",
+                "ai.prompt.desc": "Crafting effective prompts and system instructions to maximize AI output quality and reliability",
+                "exp.label": "Career",
+                "exp.title": "Professional Experience",
+                "exp.desc": "Building impactful products for global brands",
+                "exp.role.designer": "Web UI Developer (Software Designer)",
+                "exp.role.architect": "Frontend Architect",
+                "exp.role.ssr": "Web UI Developer (Semi-Senior Advanced)",
+                "exp.role.senior": "Senior Web Developer",
+                "exp.disney2.project": "Web Components Design System \u2022 9 months",
+                "exp.gym.project": "Fitness SaaS Platform \u2022 1 year",
+                "exp.wb.project": "Content \u0026 Advertising Platform \u2022 3 years",
+                "exp.itx.project": "Government \u0026 Enterprise \u2022 10 months",
+                "exp.disney1.project": "Parks \u0026 Hotels Consumer Site \u2022 3 years",
+                "exp.tigo.project": "Smart TV \u0026 Streaming Apps \u2022 4 years",
+                "exp.disney2.b1": "Led a team of six frontend engineers in developing a framework-agnostic design system using Stencil, Tailwind CSS, and Storybook",
+                "exp.disney2.b2": "Ensured all components met accessibility (WCAG 2.1 AA) standards and best practices",
+                "exp.disney2.b3": "Developed proof-of-concepts integrating Figma MCP and Storybook MCP for AI-augmented design-to-code workflows",
+                "exp.disney2.b4": "Established development best practices to deliver scalable, maintainable code",
+                "exp.disney2.b5": "Conducted technical interviews for frontend candidates",
+                "exp.gym.b1": "Developed UI components and pages using React, MUI, Zod, Zustand, and TanStack Query",
+                "exp.gym.b2": "Focused on scalable architecture, component reusability, and security best practices",
+                "exp.gym.b3": "Ensured seamless integration with RESTful APIs and delivered high-performing responsive experiences",
+                "exp.gym.b4": "Championed server-driven UI patterns and component-based development",
+                "exp.wb.b1": "Led a development team of six engineers through the HBO/Discovery merger",
+                "exp.wb.b2": "Spearheaded the migration from monolithic architecture to micro-frontend services",
+                "exp.wb.b3": "Implemented centralized state management to improve data consistency",
+                "exp.wb.b4": "Built the Content Planner application supporting the HBO\u2013Discovery content fusion",
+                "exp.wb.b5": "Developed micro-frontend applications for scheduling and advertising workflows",
+                "exp.wb.b6": "Translated business needs into technical solutions through client engagement",
+                "exp.itx.b1": "Led a team of four developers building mobile and web applications",
+                "exp.itx.b2": "Architected ZONASER, a high-impact Ionic app that streamlined government procedures for thousands of Colombian users",
+                "exp.itx.b3": "Defined web architectures ensuring quality, security, and robustness",
+                "exp.itx.b4": "Validated UX designs and provided technical guidance",
+                "exp.disney1.b1": "Contributed to WCAG compliance across Disney\u0027s consumer-facing website",
+                "exp.disney1.b2": "Built a 360\u00b0 image viewer using vanilla JavaScript and Three.js (WebGL)",
+                "exp.disney1.b3": "Resolved performance issues and visual inconsistencies across the platform",
+                "exp.disney1.b4": "Developed new features and maintained complex web application functionality",
+                "exp.tigo.b1": "Led a three-member team building Smart TV applications",
+                "exp.tigo.b2": "Developed UNETV, a Smart TV video-on-demand streaming application",
+                "exp.tigo.b3": "Maintained expertise in Samsung Tizen and LG WebOS SDKs",
+                "exp.tigo.b4": "Managed full deployment lifecycle from development to production",
+                "edu.label": "Education",
+                "edu.title": "Academic Background",
+                "edu.uta.degree": "M.S. in Software Engineering",
+                "edu.uta.meta": "College of Engineering \u2022 Starting Spring 2027",
+                "edu.uta.badge": "Admitted",
+                "edu.comf.degree": "Systems Engineering",
+                "edu.comf.meta": "Cartagena de Indias, Colombia \u2022 2002 \u2013 2006",
+                "lang.label": "Languages",
+                "lang.title": "Communication",
+                "lang.es.name": "Spanish",
+                "lang.es.level": "Native Speaker",
+                "lang.en.name": "English",
+                "lang.en.level": "B2 \u2014 TOEFL Certified"
+            },
+            es: {
+                "nav.about": "Sobre m\u00ed",
+                "nav.skills": "Habilidades",
+                "nav.ai": "IA",
+                "nav.experience": "Experiencia",
+                "nav.education": "Educaci\u00f3n",
+                "hero.subtitle": "Desarrollador Web UI Senior y Arquitecto Frontend",
+                "hero.summary": "M\u00e1s de 10 a\u00f1os construyendo aplicaciones web escalables y centradas en el usuario para marcas de clase mundial como Disney, Warner Bros. Discovery y Gym Launch. Experto en sistemas de dise\u00f1o, arquitectura frontend y flujos de desarrollo aumentados con IA.",
+                "hero.years": "10+ A\u00f1os",
+                "hero.english": "Ingl\u00e9s B2 (TOEFL)",
+                "skills.label": "Experiencia T\u00e9cnica",
+                "skills.title": "Habilidades T\u00e9cnicas",
+                "skills.desc": "Una d\u00e9cada de desarrollo a nivel empresarial con tecnolog\u00edas web modernas",
+                "skills.frontend": "Frameworks Frontend",
+                "skills.languages": "Lenguajes y Core",
+                "skills.ui": "UI y Sistemas de Dise\u00f1o",
+                "skills.state": "Estado y Datos",
+                "skills.arch": "Arquitectura y Testing",
+                "skills.cloud": "Cloud y DevOps",
+                "skills.blockchain": "Blockchain y Web3",
+                "ai.label": "Innovaci\u00f3n",
+                "ai.title": "IA y Tecnolog\u00edas Emergentes",
+                "ai.desc": "Integrando herramientas potenciadas por IA en pipelines modernos de entrega de software",
+                "ai.mcp.title": "Servidores MCP",
+                "ai.mcp.desc": "Construyendo servidores Model Context Protocol que conectan asistentes de IA con herramientas de desarrollo y servicios externos",
+                "ai.agents.title": "Agentes IA",
+                "ai.agents.desc": "Dise\u00f1ando agentes aut\u00f3nomos de IA que analizan, planifican y ejecutan tareas complejas de desarrollo de software",
+                "ai.sub.title": "Sub-Agentes",
+                "ai.sub.desc": "Orquestando pipelines multi-agente donde sub-agentes especializados colaboran en soluciones full-stack",
+                "ai.skills.title": "Skills de IA",
+                "ai.skills.desc": "Creando capacidades modulares y reutilizables de IA que se componen y comparten entre equipos y proyectos",
+                "ai.sdd.title": "Desarrollo Guiado por Specs",
+                "ai.sdd.desc": "Implementando flujos SDD donde las especificaciones impulsan la generaci\u00f3n autom\u00e1tica de c\u00f3digo y pruebas",
+                "ai.prompt.title": "Ingenier\u00eda de Prompts",
+                "ai.prompt.desc": "Creando prompts efectivos e instrucciones de sistema para maximizar la calidad y confiabilidad del output de IA",
+                "exp.label": "Carrera",
+                "exp.title": "Experiencia Profesional",
+                "exp.desc": "Construyendo productos de impacto para marcas globales",
+                "exp.role.designer": "Desarrollador Web UI (Dise\u00f1ador de Software)",
+                "exp.role.architect": "Arquitecto Frontend",
+                "exp.role.ssr": "Desarrollador Web UI (Semi-Senior Avanzado)",
+                "exp.role.senior": "Desarrollador Web Senior",
+                "exp.disney2.project": "Sistema de Dise\u00f1o Web Components \u2022 9 meses",
+                "exp.gym.project": "Plataforma SaaS Fitness \u2022 1 a\u00f1o",
+                "exp.wb.project": "Plataforma de Contenido y Publicidad \u2022 3 a\u00f1os",
+                "exp.itx.project": "Gobierno y Empresa \u2022 10 meses",
+                "exp.disney1.project": "Sitio de Parques y Hoteles \u2022 3 a\u00f1os",
+                "exp.tigo.project": "Apps Smart TV y Streaming \u2022 4 a\u00f1os",
+                "exp.disney2.b1": "Lider\u00e9 un equipo de seis ingenieros frontend en el desarrollo de un sistema de dise\u00f1o agn\u00f3stico de framework usando Stencil, Tailwind CSS y Storybook",
+                "exp.disney2.b2": "Asegur\u00e9 que todos los componentes cumplieran est\u00e1ndares de accesibilidad (WCAG 2.1 AA)",
+                "exp.disney2.b3": "Desarroll\u00e9 pruebas de concepto integrando Figma MCP y Storybook MCP para flujos de dise\u00f1o-a-c\u00f3digo aumentados con IA",
+                "exp.disney2.b4": "Establec\u00ed mejores pr\u00e1cticas de desarrollo para entregar c\u00f3digo escalable y mantenible",
+                "exp.disney2.b5": "Conduje entrevistas t\u00e9cnicas para candidatos frontend",
+                "exp.gym.b1": "Desarroll\u00e9 componentes UI y p\u00e1ginas usando React, MUI, Zod, Zustand y TanStack Query",
+                "exp.gym.b2": "Enfocado en arquitectura escalable, reutilizaci\u00f3n de componentes y mejores pr\u00e1cticas de seguridad",
+                "exp.gym.b3": "Asegur\u00e9 integraci\u00f3n fluida con APIs RESTful y entregu\u00e9 experiencias responsive de alto rendimiento",
+                "exp.gym.b4": "Promov\u00ed patrones de UI server-driven y desarrollo basado en componentes",
+                "exp.wb.b1": "Lider\u00e9 un equipo de seis ingenieros durante la fusi\u00f3n HBO/Discovery",
+                "exp.wb.b2": "Lider\u00e9 la migraci\u00f3n de arquitectura monol\u00edtica a servicios micro-frontend",
+                "exp.wb.b3": "Implement\u00e9 gesti\u00f3n centralizada de estado para mejorar la consistencia de datos",
+                "exp.wb.b4": "Constru\u00ed la aplicaci\u00f3n Content Planner para la fusi\u00f3n de contenido HBO\u2013Discovery",
+                "exp.wb.b5": "Desarroll\u00e9 aplicaciones micro-frontend para flujos de programaci\u00f3n y publicidad",
+                "exp.wb.b6": "Traduje necesidades de negocio en soluciones t\u00e9cnicas mediante participaci\u00f3n con el cliente",
+                "exp.itx.b1": "Lider\u00e9 un equipo de cuatro desarrolladores construyendo aplicaciones m\u00f3viles y web",
+                "exp.itx.b2": "Arquitect\u00e9 ZONASER, una app Ionic de alto impacto que simplific\u00f3 tr\u00e1mites gubernamentales para miles de usuarios colombianos",
+                "exp.itx.b3": "Defin\u00ed arquitecturas web garantizando calidad, seguridad y robustez",
+                "exp.itx.b4": "Valid\u00e9 dise\u00f1os UX y brind\u00e9 gu\u00eda t\u00e9cnica",
+                "exp.disney1.b1": "Contribu\u00ed al cumplimiento WCAG en el sitio web de consumo de Disney",
+                "exp.disney1.b2": "Constru\u00ed un visor de im\u00e1genes 360\u00b0 usando JavaScript vanilla y Three.js (WebGL)",
+                "exp.disney1.b3": "Resolv\u00ed problemas de rendimiento e inconsistencias visuales en la plataforma",
+                "exp.disney1.b4": "Desarroll\u00e9 nuevas funcionalidades y mantuve aplicaciones web complejas",
+                "exp.tigo.b1": "Lider\u00e9 un equipo de tres personas construyendo aplicaciones para Smart TV",
+                "exp.tigo.b2": "Desarroll\u00e9 UNETV, una aplicaci\u00f3n de streaming de video bajo demanda para Smart TV",
+                "exp.tigo.b3": "Mantuve experiencia en los SDKs de Samsung Tizen y LG WebOS",
+                "exp.tigo.b4": "Gestion\u00e9 el ciclo completo de despliegue desde desarrollo hasta producci\u00f3n",
+                "edu.label": "Educaci\u00f3n",
+                "edu.title": "Formaci\u00f3n Acad\u00e9mica",
+                "edu.uta.degree": "Maestr\u00eda en Ingenier\u00eda de Software",
+                "edu.uta.meta": "Facultad de Ingenier\u00eda \u2022 Inicio Primavera 2027",
+                "edu.uta.badge": "Admitido",
+                "edu.comf.degree": "Ingenier\u00eda de Sistemas",
+                "edu.comf.meta": "Cartagena de Indias, Colombia \u2022 2002 \u2013 2006",
+                "lang.label": "Idiomas",
+                "lang.title": "Comunicaci\u00f3n",
+                "lang.es.name": "Espa\u00f1ol",
+                "lang.es.level": "Nativo",
+                "lang.en.name": "Ingl\u00e9s",
+                "lang.en.level": "B2 \u2014 Certificado TOEFL"
+            }
+        };
+
+        let currentLang = localStorage.getItem("cv-lang") || "en";
+
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem("cv-lang", lang);
+            document.documentElement.lang = lang;
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (i18n[lang][key]) el.textContent = i18n[lang][key];
+            });
+            document.getElementById("langEn").classList.toggle("active", lang === "en");
+            document.getElementById("langEs").classList.toggle("active", lang === "es");
+        }
+
+        // Language switch buttons
+        document.getElementById("langEn").addEventListener("click", () => setLang("en"));
+        document.getElementById("langEs").addEventListener("click", () => setLang("es"));
+
+        // Apply saved language on load
+        setLang(currentLang);
+
         // Mobile nav toggle
-        document.getElementById('navToggle').addEventListener('click', () => {
-            document.getElementById('navLinks').classList.toggle('open');
+        document.getElementById("navToggle").addEventListener("click", () => {
+            document.getElementById("navLinks").classList.toggle("open");
         });
-        document.querySelectorAll('.nav-links a').forEach(a => {
-            a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+        document.querySelectorAll(".nav-links a").forEach(a => {
+            a.addEventListener("click", () => document.getElementById("navLinks").classList.remove("open"));
         });
 
         // Scroll reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add("visible");
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+        document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
